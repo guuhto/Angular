@@ -1,0 +1,27 @@
+<form [formGroup]="clienteForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="nome">Nome:</label>
+    <input id="nome" formControlName="nome" />
+    <div *ngIf="clienteForm.get('nome')?.invalid && clienteForm.get('nome')?.touched">
+      Nome é obrigatório.
+    </div>
+  </div>
+
+  <div>
+    <label for="cpf">CPF:</label>
+    <input id="cpf" formControlName="cpf" />
+    <div *ngIf="clienteForm.get('cpf')?.invalid && clienteForm.get('cpf')?.touched">
+      CPF inválido.
+    </div>
+  </div>
+
+  <div>
+    <label for="dataNascimento">Data de Nascimento:</label>
+    <input id="dataNascimento" formControlName="dataNascimento" type="date" />
+    <div *ngIf="clienteForm.get('dataNascimento')?.invalid && clienteForm.get('dataNascimento')?.touched">
+      Data de nascimento é obrigatória.
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="clienteForm.invalid">Adicionar</button>
+</form>
